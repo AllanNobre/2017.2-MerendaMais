@@ -23,6 +23,12 @@ const styles = {
     textAlign: 'center',
     color: '#FFF',
   },
+  basicScreen: {
+    flex: 1,
+    backgroundColor: 'transparent',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 1,
+  },
 };
 
 export default styles;

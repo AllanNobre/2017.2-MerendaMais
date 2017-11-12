@@ -213,6 +213,20 @@ const Menu = () => {
 
       <TouchableOpacity
         activeOpacity={0.7}
+        onPress={() => Actions.accessBooklet()}
+      >
+        <View style={styles.fieldStyle}>
+          <MaterialIcons name="book" style={styles.icon} size={32} color="black" />
+          <Text
+            style={styles.item}
+          >
+            Acessar Cartilha
+          </Text>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        activeOpacity={0.7}
         onPress={() => Alert.alert(
           'Sair',
           'Realmente deseja sair da sua conta?',

@@ -20,6 +20,7 @@ import FoodQualityCheckoutContainer from './src/Containers/FoodQualityCheckoutCo
 import DocCheckoutContainer from './src/Containers/DocCheckoutContainer';
 import ReportObservationContainer from './src/Containers/ReportObservationContainer';
 import SchoolSurroundingsCheckoutContainer from './src/Containers/SchoolSurroundingsCheckoutContainer';
+import AccessBooklet from './src/screens/AccessBooklet';
 
 const Routes = () => ({
   render() {
@@ -72,6 +73,7 @@ const Routes = () => ({
               hideNavBar
             />
             <Scene key="schoolInfoScreen" component={SchoolInfoContainer} hideNavBar />
+            <Scene key="accessBooklet" component={AccessBooklet} hideNavBar />
           </Scene>
         </Drawer>
       </Router>
