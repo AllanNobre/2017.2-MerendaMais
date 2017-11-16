@@ -8,11 +8,54 @@ exports[`Testing SchedulingVisit renders as expected 1`] = `
     }
   }
 >
-  <Header
-    backButton={true}
-    subTitle="VISITA"
-    title="AGENDAR"
-  />
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FF9500",
+        "borderBottomColor": "black",
+        "borderBottomWidth": 1,
+        "flexDirection": "row",
+        "height": 100,
+        "paddingBottom": 10,
+        "paddingTop": 10,
+      }
+    }
+  >
+    <TouchableOpacity
+      activeOpacity={0.2}
+      onPress={[Function]}
+    >
+      <Icon
+        allowFontScaling={false}
+        color="black"
+        name="ios-arrow-back-outline"
+        size={45}
+        style={
+          Object {
+            "marginLeft": 20,
+          }
+        }
+      />
+    </TouchableOpacity>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "white",
+          "fontSize": 60,
+          "fontWeight": "bold",
+          "marginLeft": 60,
+          "marginTop": 10,
+        }
+      }
+    >
+      Agendar Visita
+    </Text>
+  </View>
   <PopupDialog
     dialogTitle={
       <DialogTitle
