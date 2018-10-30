@@ -1,22 +1,34 @@
 import React, { PropTypes } from 'react';
-import { MaterialIcons } from '@expo/vector-icons';
-import { StyleSheet,
+import {
+  StyleSheet,
   TouchableOpacity,
   Text,
-  TextInput,
   View,
   Alert,
   Picker,
-  ScrollView } from 'react-native';
+  ScrollView,
+  BackHandler,
+  ActivityIndicator,
+} from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import {
   TITULAR_COUNSELOR,
   SURROGATE_COUNSELOR,
   EXECUTIVE_POWER,
   EDUCATION_WORKERS,
   STUDENT_PARENTS,
-  CIVILIAN_ENTITIES } from '../constants';
+  CIVILIAN_ENTITIES,
+  EDIT_SUCCEED,
+} from '../constants/generalConstants';
 import Header from '../components/Header';
 import { logInfo } from '../../logConfig/loggers';
+import DropdownComponent from '../components/DropdownComponent';
+import NameField from '../components/NameField';
+import PhoneField from '../components/PhoneField';
+import ShowToast from '../components/Toast';
+import { EDIT_ACCOUNT_ERROR, EDIT_PROFILE_ERROR } from '../constants/errorConstants';
+import treatingEditCounselorError from '../ErrorTreatment';
+import { backHandlerPop } from '../NavigationFunctions';
 
 const FILE_NAME = 'UpdateInfoScreen.js';
 
@@ -89,22 +101,17 @@ export default class UpdateInfoScreen extends React.Component {
       segment: this.props.counselor.profile.segment,
       error: false,
     };
-
-    this.validateName = this.validateName.bind(this);
-    this.validatePhone = this.validatePhone.bind(this);
   }
 
-  validateName(name) {
-    const validName = name.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g, '');
-    this.setState({ name: validName });
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPop);
   }
 
-  validatePhone(phone) {
-    const validPhone = phone.replace(/[^0-9]/g, '');
-    this.setState({ phone: validPhone });
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPop);
   }
 
-  updateInformation() {
+  async updateInformation() {
     const nameRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g;
     const phoneRegex1 = /[0-9]{11}/g;
     const phoneRegex2 = /[0-9]{10}/g;
@@ -137,7 +144,25 @@ export default class UpdateInfoScreen extends React.Component {
 
     // Checking if was found a irregularity in updateInformation fields.
     if (this.state.error === false) {
-      this.props.asyncEditCounselor(this.fetchCounselorData());
+      logInfo(FILE_NAME, 'updateInformation', 'Trying to update counselor data.');
+      try {
+        await this.props.asyncEditCounselor(this.fetchCounselorData());
+        logInfo(FILE_NAME, 'updateInformation', 'Successfully updated counselor data.');
+        Actions.popTo('profileInfoScreen');
+        ShowToast.Toast(EDIT_SUCCEED);
+      } catch (error) {
+        const errorJson = JSON.parse(error.message);
+        switch (errorJson.name) {
+          case EDIT_ACCOUNT_ERROR:
+            treatingEditCounselorError(errorJson.status);
+            break;
+          case EDIT_PROFILE_ERROR:
+            treatingEditCounselorError(errorJson.status);
+            break;
+          default:
+            break;
+        }
+      }
     } else {
       Alert.alert('FALHA AO EDITAR DADOS', errorMessage);
     }
@@ -166,87 +191,84 @@ export default class UpdateInfoScreen extends React.Component {
   render() {
     logInfo(FILE_NAME, 'render()',
       `State of update info page: ${JSON.stringify(this.state, null, 2)}`);
+    let activityIndicatorOrScreen = null;
+    if (this.props.application === true) {
+      activityIndicatorOrScreen = (
+        <ActivityIndicator
+          style={{ marginTop: 50, justifyContent: 'center' }}
+          size="large"
+          color="#FF9500"
+        />
+      );
+    } else {
+      activityIndicatorOrScreen = (
+        <View>
+          <ScrollView>
+            <View style={styles.content}>
 
+              <Text>Nome</Text>
+              <NameField
+                value={this.state.name}
+                callback={validName => this.setState({ name: validName })}
+              />
+
+              <Text>Telefone</Text>
+              <PhoneField
+                value={this.state.phone}
+                callback={validPhone =>
+                  this.setState({ phone: validPhone })}
+              />
+
+              <Text>Tipo de Conselheiro</Text>
+              <DropdownComponent
+                selectedValue={this.state.counselorType}
+                callback={counselorTypeChecked =>
+                  this.setState({ counselorType: counselorTypeChecked })}
+                pickerTitle={[
+                  <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />,
+                ]}
+                pickerBody={[
+                  <Picker.Item value={TITULAR_COUNSELOR} label={TITULAR_COUNSELOR} />,
+                  <Picker.Item value={SURROGATE_COUNSELOR} label={SURROGATE_COUNSELOR} />,
+                ]}
+              />
+
+              <Text>Segmento</Text>
+              <DropdownComponent
+                selectedValue={this.state.segment}
+                callback={segmentChecked => this.setState({ segment: segmentChecked })}
+                pickerTitle={[
+                  <Picker.Item value="" label="Escolha seu segmento" color="#95a5a6" />,
+                ]}
+                pickerBody={[
+                  <Picker.Item value={EXECUTIVE_POWER} label={EXECUTIVE_POWER} />,
+                  <Picker.Item value={EDUCATION_WORKERS} label={EDUCATION_WORKERS} />,
+                  <Picker.Item value={STUDENT_PARENTS} label={STUDENT_PARENTS} />,
+                  <Picker.Item value={CIVILIAN_ENTITIES} label={CIVILIAN_ENTITIES} />,
+                ]}
+              />
+
+            </View>
+          </ScrollView>
+          <TouchableOpacity
+            key="infoUpdate"
+            style={styles.buttonContainer}
+            onPress={() => this.updateInformation()}
+          >
+            <Text style={styles.buttonText}>Concluir</Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
     return (
 
       <View style={styles.principal}>
         <Header
           title={'Editar Informações'}
-          backButton
         />
-        <ScrollView>
-          <View style={styles.content}>
 
-            <Text>Nome</Text>
-            <View style={styles.InputFieldStyle}>
-              <MaterialIcons name="face" style={styles.icon} size={26} color="black" />
-              <TextInput
-                style={styles.InputStyle}
-                placeholder="Digite o seu nome completo"
-                placeholderTextColor="#95a5a6"
-                underlineColorAndroid="transparent"
-                returnKeyLabel={'next'}
-                maxLength={60}
-                keyboardType={'default'}
-                autoCapitalize={'words'}
-                onChangeText={text => this.validateName(text)}
-                value={this.state.name}
-              />
-            </View>
+        {activityIndicatorOrScreen}
 
-            <Text>Telefone</Text>
-            <View style={styles.InputFieldStyle}>
-              <MaterialIcons name="phone" style={styles.icon} size={26} color="black" />
-              <TextInput
-                style={styles.InputStyle}
-                placeholder="Digite o seu telefone"
-                placeholderTextColor="#95a5a6"
-                underlineColorAndroid="transparent"
-                returnKeyLabel={'next'}
-                maxLength={11}
-                keyboardType={'phone-pad'}
-                onChangeText={text => this.validatePhone(text)}
-                value={this.state.phone}
-              />
-            </View>
-
-            <Text>Tipo de Conselheiro</Text>
-            <View style={styles.InputFieldDropdown}>
-              <Picker
-                onValueChange={value => this.setState({ counselorType: value })}
-                selectedValue={this.state.counselorType}
-              >
-                <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />
-                <Picker.Item value={TITULAR_COUNSELOR} label={TITULAR_COUNSELOR} />
-                <Picker.Item value={SURROGATE_COUNSELOR} label={SURROGATE_COUNSELOR} />
-              </Picker>
-            </View>
-
-            <Text>Segmento</Text>
-            <View
-              style={styles.InputFieldDropdown}
-            >
-              <Picker
-                onValueChange={value => this.setState({ segment: value })}
-                selectedValue={this.state.segment}
-              >
-                <Picker.Item value="" label="Escolha seu segmento" color="#95a5a6" />
-                <Picker.Item value={EXECUTIVE_POWER} label={EXECUTIVE_POWER} />
-                <Picker.Item value={EDUCATION_WORKERS} label={EDUCATION_WORKERS} />
-                <Picker.Item value={STUDENT_PARENTS} label={STUDENT_PARENTS} />
-                <Picker.Item value={CIVILIAN_ENTITIES} label={CIVILIAN_ENTITIES} />
-              </Picker>
-            </View>
-
-          </View>
-        </ScrollView>
-        <TouchableOpacity
-          key="infoUpdate"
-          style={styles.buttonContainer}
-          onPress={() => this.updateInformation()}
-        >
-          <Text style={styles.buttonText}>Concluir</Text>
-        </TouchableOpacity>
       </View>
     );
   }
@@ -256,6 +278,7 @@ const { shape, string, number, bool } = PropTypes;
 
 UpdateInfoScreen.propTypes = {
   asyncEditCounselor: PropTypes.func.isRequired,
+  application: PropTypes.bool.isRequired,
   counselor: shape({
     name: string.isRequired,
     nuvemCode: number.isRequired,

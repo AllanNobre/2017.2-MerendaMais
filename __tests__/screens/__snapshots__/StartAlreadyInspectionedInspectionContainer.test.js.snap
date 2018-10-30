@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing StartPendingInspection Screen renders as expected 1`] = `
+<StartAlreadyInspectionedInspection
+  asyncGetCurrentPost={[Function]}
+  getIsLoadingResult={false}
+  isLoading={false}
+  isLoadingResult={[Function]}
+  isNotLoadingResult={[Function]}
+  reportResult={
+    Object {
+      "isLoadingResult": false,
+    }
+  }
+  resetStore={[Function]}
+/>
+`;

@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dimensions, StyleSheet, View, Alert } from 'react-native';
+import { Dimensions, StyleSheet, View, Alert, ScrollView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import MenuButton from './MenuButton';
+import MENU_ITENS from '../constants/menuItens';
 
 const window = Dimensions.get('window');
 
@@ -21,53 +22,61 @@ class Menu extends React.PureComponent {
   render() {
     return (
       <View style={styles.menu}>
-        <MenuButton
-          key="searchSchool"
-          text="Pesquisar Escola"
-          iconName="search"
-          onPress={() => { Actions.searchSchool(); }}
-        />
-        <MenuButton
-          key="updateInfoScreen"
-          text="Editar Dados"
-          iconName="settings"
-          onPress={() => { Actions.updateInfoScreen(); }}
-        />
-        <MenuButton
-          key="profileInfoScreen"
-          text="Perfil"
-          iconName="account-box"
-          onPress={() => { Actions.profileInfoScreen(); }}
-        />
-        <MenuButton
-          key="schedulingVisit"
-          text="Agendar visita"
-          iconName="access-time"
-          onPress={() => { Actions.schedulingVisit(); }}
-        />
-        <MenuButton
-          key="logout"
-          text="Sair"
-          iconName="logout"
-          onPress={() => Alert.alert(
-            'Sair',
-            'Realmente deseja sair da sua conta?',
-            [
-              { text: 'Não', onPress: () => Actions.drawerOpen(), style: 'cancel' },
-              { text: 'Sim', onPress: () => Actions.initialScreen() },
-            ],
-            { cancelable: false },
-          )}
-          isLogout
-        />
-        {this.props.counselor.profile.isPresident && (
-          <MenuButton
-            key="manageRegisters"
-            text="Gerenciar Conselheiros"
-            iconName="group-work"
-            onPress={() => { Actions.manageRegisters(); }}
-          />
-        )}
+        <ScrollView>
+          {
+            MENU_ITENS.map(item => (
+              item.key !== 'manageRegisters' ||
+              (this.props.counselor.profile.isPresident &&
+              item.key === 'manageRegisters') ?
+                <MenuButton
+                  key={item.key}
+                  text={item.text}
+                  iconName={item.iconName}
+                  onPress={() => {
+                    switch (item.key) {
+                      case 'searchSchool':
+                        Actions.searchSchool();
+                        break;
+                      case 'profileInfoScreen':
+                        Actions.profileInfoScreen();
+                        break;
+                      case 'schedulingVisit':
+                        Actions.schedulingVisit();
+                        break;
+                      case 'scheduleMeeting':
+                        Actions.scheduleMeeting();
+                        break;
+                      case 'notifications':
+                        Actions.PrincipalNotifications();
+                        break;
+                      case 'manageRegisters':
+                        Actions.manageRegisters();
+                        break;
+                      case 'seeLegislation':
+                        Actions.lesgislationScreen();
+                        break;
+                      case 'doComplaint':
+                        Actions.complaintScreen();
+                        break;
+                      case 'logout':
+                        Alert.alert(
+                          'Sair',
+                          'Realmente deseja sair da sua conta?',
+                          [
+                            { text: 'Não', onPress: () => Actions.drawerOpen(), style: 'cancel' },
+                            { text: 'Sim', onPress: () => Actions.initialScreen() },
+                          ],
+                          { cancelable: false },
+                        );
+                        break;
+                      default: break;
+                    }
+                  }}
+                /> : undefined
+            ),
+            )
+          }
+        </ScrollView>
       </View>
     );
   }
@@ -83,10 +92,9 @@ Menu.propTypes = {
 
 Menu.defaultProps = {
   counselor: PropTypes.shape({
-    prifle: {
+    profile: {
       isPresident: false,
     },
   }),
 };
-
 export default Menu;

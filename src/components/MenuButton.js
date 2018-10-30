@@ -1,12 +1,13 @@
 import React from 'react';
-import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, Text, View } from 'react-native';
-import styles from '../Styles';
+import styles from '../Styles/GeneralStyles';
 
 const MenuButton = props => (
   <TouchableOpacity
-    key={props.key}
+    key="menuButton"
     activeOpacity={0.7}
     onPress={() => props.onPress()}
   >
@@ -36,7 +37,6 @@ MenuButton.propTypes = {
   text: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
   isLogout: PropTypes.bool,
-  key: PropTypes.string.isRequired,
 };
 
 MenuButton.defaultProps = {

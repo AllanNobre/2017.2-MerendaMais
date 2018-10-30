@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { FontAwesome } from '@expo/vector-icons';
+import PropTypes from 'prop-types';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const styles = StyleSheet.create({
   headerBox: {
@@ -43,18 +44,9 @@ const styles = StyleSheet.create({
 
 
 class MainScreen extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isOpen: false,
-    };
+  componentWillMount() {
+    this.props.resetStore('list', 'report', 'school');
   }
-
-  updateMenuState(isOpen) {
-    this.setState({ isOpen });
-  }
-
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: 'white' }}>
@@ -73,15 +65,20 @@ class MainScreen extends React.Component {
           <TouchableOpacity
             style={styles.buttonInspect}
             activeOpacity={0.7}
-            onPress={() => Actions.mainReportsScreen()}
+            onPress={() => Actions.StartPendingInspection()}
           >
             <Text style={{ color: 'white', fontSize: 20 }}>Fiscalizar</Text>
           </TouchableOpacity>
         </View>
       </View>
-
     );
   }
 }
+
+const { func } = PropTypes;
+
+MainScreen.propTypes = {
+  resetStore: func.isRequired,
+};
 
 export default MainScreen;

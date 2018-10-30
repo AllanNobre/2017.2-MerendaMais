@@ -1,5 +1,8 @@
 import initialState from './initialState';
-import { SET_SCHOOL_INFO, SET_SCHOOL_UF, SET_SCHOOL_CITY } from '../actions/types';
+import { SET_SCHOOL_INFO,
+  SET_SCHOOL_UF,
+  SET_SCHOOL_CITY,
+  RESET_SCHOOL } from '../actions/types';
 // import { logInfo } from '../../logConfig/loggers';
 
 // const FILE_NAME = 'schoolReducer.js';
@@ -22,6 +25,7 @@ const schoolReducer = (state = initialState.school, action) => {
         schoolEmail: action.payload.schoolEmail,
         schoolLat: action.payload.schoolLat,
         schoolLong: action.payload.schoolLong,
+        schoolStudents: action.payload.schoolStudents,
         schoolSelected: action.payload.schoolSelected,
       };
     case SET_SCHOOL_UF:
@@ -33,6 +37,19 @@ const schoolReducer = (state = initialState.school, action) => {
       return {
         ...state,
         city: action.payload,
+      };
+    case RESET_SCHOOL:
+      return {
+        schoolCode: 0,
+        schoolName: '',
+        schoolPhone: '',
+        schoolEmail: '',
+        schoolLat: '',
+        schoolLong: '',
+        schoolStudents: '',
+        schoolSelected: false,
+        uf: '',
+        city: '',
       };
     default:
       return state;

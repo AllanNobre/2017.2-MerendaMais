@@ -1,0 +1,692 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
+<Component
+  style={
+    Object {
+      "backgroundColor": "white",
+      "flex": 1,
+    }
+  }
+>
+  <Header
+    backButton={false}
+    onPress={[Function]}
+    subTitle="Manipuladores de Alimentos"
+    title="Lista de verificação"
+  />
+  <KeyboardAvoidingView
+    behavior="padding"
+    enabled={true}
+    keyboardVerticalOffset={0}
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "column",
+      }
+    }
+  >
+    <ScrollView>
+      <Component>
+        <Component
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "fontWeight": "bold",
+                "paddingHorizontal": 9.25,
+                "paddingTop": 5,
+              }
+            }
+          >
+            Sim
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "fontWeight": "bold",
+                "paddingHorizontal": 9.25,
+                "paddingTop": 5,
+              }
+            }
+          >
+            Nao
+          </Text>
+        </Component>
+        <Component
+          key="0"
+          style={
+            Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
+              "flexDirection": "row",
+              "paddingVertical": 5,
+            }
+          }
+        >
+          <Component>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "margin": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </Component>
+          <Component>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "margin": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </Component>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+              }
+            }
+          >
+            Uniforme incompleto
+          </Text>
+        </Component>
+        <Component
+          key="1"
+          style={
+            Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
+              "flexDirection": "row",
+              "paddingVertical": 5,
+            }
+          }
+        >
+          <Component>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "margin": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </Component>
+          <Component>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "margin": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </Component>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+              }
+            }
+          >
+            Manipuladoras com maquiagem (batom, sombra, lápis de olho, etc)
+          </Text>
+        </Component>
+        <Component
+          key="2"
+          style={
+            Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
+              "flexDirection": "row",
+              "paddingVertical": 5,
+            }
+          }
+        >
+          <Component>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "margin": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </Component>
+          <Component>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "margin": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </Component>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+              }
+            }
+          >
+            Manipuladoras com esmalte nas unhas
+          </Text>
+        </Component>
+        <Component
+          key="3"
+          style={
+            Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
+              "flexDirection": "row",
+              "paddingVertical": 5,
+            }
+          }
+        >
+          <Component>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "margin": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </Component>
+          <Component>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "margin": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </Component>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+              }
+            }
+          >
+            Manipuladores com unhas compridas
+          </Text>
+        </Component>
+        <Component
+          key="4"
+          style={
+            Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
+              "flexDirection": "row",
+              "paddingVertical": 5,
+            }
+          }
+        >
+          <Component>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "margin": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </Component>
+          <Component>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "margin": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </Component>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+              }
+            }
+          >
+            Manipuladores doentes
+          </Text>
+        </Component>
+        <Component
+          key="5"
+          style={
+            Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
+              "flexDirection": "row",
+              "paddingVertical": 5,
+            }
+          }
+        >
+          <Component>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "margin": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </Component>
+          <Component>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "margin": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </Component>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+              }
+            }
+          >
+            Manipuladores sem touca
+          </Text>
+        </Component>
+        <Component
+          key="6"
+          style={
+            Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
+              "flexDirection": "row",
+              "paddingVertical": 5,
+            }
+          }
+        >
+          <Component>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "margin": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </Component>
+          <Component>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "margin": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </Component>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+              }
+            }
+          >
+            Manipuladoras usando brincos, anéis ou pulseiras
+          </Text>
+        </Component>
+        <Component
+          key="7"
+          style={
+            Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
+              "flexDirection": "row",
+              "paddingVertical": 5,
+            }
+          }
+        >
+          <Component>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "margin": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </Component>
+          <Component>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "margin": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </Component>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+              }
+            }
+          >
+            Visitantes/Manipuladores sem touca
+          </Text>
+        </Component>
+      </Component>
+      <Component
+        behavior="padding"
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "fontSize": 15,
+              "marginLeft": 15,
+              "marginTop": 15,
+            }
+          }
+        >
+          Alguma observação adicional? Insira aqui. (Opcional)
+        </Text>
+        <Component
+          style={
+            Object {
+              "marginHorizontal": 10,
+              "marginTop": 5,
+            }
+          }
+        >
+          <TextInput
+            allowFontScaling={true}
+            multiline={true}
+            onChangeText={[Function]}
+            placeholder="Observações (opcional)"
+            style={
+              Object {
+                "borderRadius": 12,
+                "borderWidth": 1,
+                "fontSize": 37.5,
+                "height": 333.5,
+                "paddingLeft": 10,
+                "paddingTop": 10,
+                "textAlignVertical": "top",
+              }
+            }
+            underlineColorAndroid="transparent"
+            value=""
+          />
+        </Component>
+      </Component>
+      <TouchableOpacity
+        activeOpacity={0.2}
+        key="setObservation"
+        onPress={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#FF9500",
+            "borderRadius": 7,
+            "borderWidth": 1,
+            "marginHorizontal": 15,
+            "marginVertical": 30,
+            "paddingVertical": 15,
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#FFF",
+              "fontSize": 15,
+              "textAlign": "center",
+            }
+          }
+        >
+          Concluir
+        </Text>
+      </TouchableOpacity>
+    </ScrollView>
+  </KeyboardAvoidingView>
+</Component>
+`;

@@ -1,95 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, Picker, TouchableOpacity, Alert, ScrollView } from 'react-native';
+import { Text, View, TouchableOpacity, ScrollView, BackHandler } from 'react-native';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
 } from 'react-native-popup-dialog';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
-import Header from '../components/Header';
 import SchoolData from '../components/SchoolData';
+import EmailField from '../components/EmailField';
 import Button from '../components/Button';
-
-import store from '../Reducers/store';
-
-const styles = StyleSheet.create({
-
-  principal: {
-    flex: 1,
-  },
-
-  schedullingButton: {
-    paddingVertical: 20,
-    borderWidth: 1,
-    borderRadius: 7,
-    marginHorizontal: 20,
-    marginTop: 10,
-    marginBottom: 10,
-    backgroundColor: '#FF9500',
-    justifyContent: 'flex-end',
-  },
-
-  disabledSchedullingButton: {
-    paddingVertical: 20,
-    borderWidth: 1,
-    borderRadius: 7,
-    marginHorizontal: 20,
-    marginTop: 10,
-    marginBottom: 10,
-    backgroundColor: '#DEDEDE',
-    justifyContent: 'flex-end',
-  },
-
-  button: {
-    paddingVertical: 15,
-    borderWidth: 1,
-    borderRadius: 7,
-    marginHorizontal: 20,
-    marginTop: 10,
-    marginBottom: 10,
-    backgroundColor: '#FF9500',
-    justifyContent: 'flex-end',
-  },
-
-  buttonText: {
-    textAlign: 'center',
-    color: '#FFF',
-  },
-
-  Container: {
-    flex: 1,
-    marginTop: 20,
-  },
-
-  Picker: {
-    marginHorizontal: 15,
-    width: '95%',
-  },
-
-  popUp: {
-    flex: 1,
-    alignItems: 'center',
-    margin: 20,
-  },
-
-  popUpText: {
-    fontSize: 15,
-    textAlign: 'justify',
-    lineHeight: 20,
-  },
-
-  popUpTitle: {
-    fontSize: 30,
-  },
-
-  icon: {
-    width: 20,
-    height: 20,
-    margin: 5,
-  },
-
-});
+import * as constant from '../constants/sendAgentEmail';
+import { backHandlerPopToMain } from '../NavigationFunctions';
+import Header from '../components/Header';
+import ShowToast from '../components/Toast';
+import { NO_OTHER_COUNSELORS } from '../constants/generalConstants';
+import styles from '../Styles/SchedulingVisitStyles';
+import InviteAgent from '../components/InviteAgent';
 
 export default class SchedulingVisit extends React.Component {
   constructor(props) {
@@ -97,105 +24,118 @@ export default class SchedulingVisit extends React.Component {
     this.state = {
       appToken: this.props.counselor.token,
       nuvemCode: this.props.counselor.nuvemCode,
+      codGrupoDestino: this.props.counselor.profile.codGroup,
       visit: {
-        codSchool: 0,
+        codSchool: this.props.school.schoolCode,
+        schoolName: this.props.school.schoolName,
         date: '',
         time: '',
         invitedAgent: false,
         agentEmail: '',
+        visitListOfInvitees: this.props.visitListOfInvitees,
       },
+      verification: true,
+      enabled: true,
     };
+    this.InviteAgentObject = new InviteAgent(props);
   }
 
-  componentWillReceiveProps(newProps) {
-    const newVisit = {
-      codSchool: newProps.school.schoolCode,
-      date: this.state.visit.date,
-      time: this.state.visit.time,
-      invitedAgent: this.state.visit.invitedAgent,
-      agentEmail: this.state.visit.agentEmail,
-    };
-
-    this.setState({ visit: newVisit });
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPopToMain);
+    this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
+      this.props.counselor.profile.cpf);
   }
 
-  invitingAgent() {
-    this.setState({ visit: { ...this.state.visit, invitedAgent: true } });
-    this.popupDialog.dismiss();
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPopToMain);
   }
 
-  notInvitingAgent() {
-    this.setState({ visit: { ...this.state.visit, invitedAgent: false } });
-    this.popupDialog.dismiss();
-  }
-
-  buttonActivation() {
-    if (this.state.visit.agentEmail > '') {
-      return (
-        <DialogButton
-          enabled
-          key="invitingButton"
-          text="Convidar"
-          onPress={() => { this.invitingAgent(); }}
-        />
-      );
-    }
-    return (
-      <DialogButton
-        enabled
-        key="notInvitingButton"
-        text="Cancelar"
-        onPress={() => { this.notInvitingAgent(); }}
-      />
-    );
-  }
-
-  testa() {
-    console.log('DEFINITIVO');
-    console.log(this.state.visit);
-  }
   render() {
-    const newStateDoc = store.getState();
-    console.log(newStateDoc.schedule);
-
     return (
       <View style={styles.principal}>
         <Header
-          title={'AGENDAR'}
-          subTitle={'VISITA'}
-          backButton
+          title={'Agendar Visita'}
+          onPress={() => Actions.popTo('mainScreen')}
         />
-
         <PopupDialog
-          ref={(popupDialog) => { this.popupDialog = popupDialog; }}
+          ref={(popupDialogAgent) => { this.popupDialogAgent = popupDialogAgent; }}
+          height="45%"
+          width="90%"
           dialogTitle={<DialogTitle
             title="Convidar um Agente?"
-            titleStyle={styles.popUpTitle}
           />}
+          actions={[
+            <View style={styles.footerPopUp}>
+              <DialogButton
+                buttonStyle={styles.dialogButtonStyle}
+                enabled
+                key="invitingButton"
+                text="Convidar"
+                onPress={() => { this.InviteAgentObject.invitingAgent(this.popupDialogAgent); }}
+              />
+
+              <DialogButton
+                buttonStyle={styles.dialogButtonStyle}
+                enabled
+                key="notInvitingButton"
+                text="Cancelar"
+                onPress={() => { this.InviteAgentObject.notInvitingAgent(this.popupDialogAgent); }}
+              />
+            </View>,
+          ]}
         >
           <View style={styles.popUp}>
-            <Text style={styles.popUpText}>Escolha algum dos agentes abaixo para poder convidá-lo.
-            Para isso, é necessário possuir um aplicativo de email instalado
-            no seu celular. Caso não possua ou não deseje convidar um agente,
-            não selecione nenhum agente e clique em cancelar.</Text>
+            <Text style={styles.popUpText}>{constant.POPUP_MESSAGE}</Text>
 
-            <Picker
-              style={styles.Picker}
-              selectedValue={this.state.visit.agentEmail}
-              onValueChange={
-                value => this.setState({ visit: { ...this.state.visit, agentEmail: value } })}
-            >
-              <Picker.Item value="" label="Escolha o agente" color="#95a5a6" />
-              <Picker.Item value={'outroemail@email.com'} label={'Agente Sanitário'} />
-              <Picker.Item value={'email@email.com'} label={'Poder Executivo'} />
-            </Picker>
-            {this.buttonActivation()}
+            <EmailField
+              callback={emailInput => this.setState(
+                { visit: { ...this.state.visit, agentEmail: emailInput } })}
+              placeholder="Email"
+              onSubmitEditing={() => this.setState({ focus: true })}
+              value={this.state.email}
+              size={28}
+            />
           </View>
         </PopupDialog>
 
-        <ScrollView>
-          <View style={styles.Container}>
-            <View>
+        <PopupDialog
+          ref={(popupDialogCounselor) => {
+            this.popupDialogCounselor = popupDialogCounselor;
+          }}
+          dialogTitle={<DialogTitle title="Escolha quem deseja convidar" />}
+          overlayPointerEvents="none"
+          height="80%"
+          width="85%"
+          actions={[
+            <View style={styles.footerPopUp} key="buttonsDialog">
+              <DialogButton
+                buttonStyle={styles.dialogButtonStyle}
+                text="CONVIDAR"
+                onPress={() => this.popupDialogCounselor.dismiss()}
+                key="dialogButton1"
+              />
+              <DialogButton
+                buttonStyle={styles.dialogButtonStyle}
+                text="CANCELAR"
+                onPress={() => this.InviteAgentObject.cancelInviteList(this.popupDialogCounselor)}
+                key="dialogButton2"
+              />
+            </View>,
+          ]}
+        >
+
+          <ScrollView key="showInviteCounselorList">
+            {this.InviteAgentObject.renderCounselorList()}
+          </ScrollView>
+        </PopupDialog>
+
+        <ScrollView
+          /* This make the nested ScrollView works. */
+          scrollEnabled={this.state.enabled}
+        >
+
+          <View>
+            <View style={styles.Container}>
               <TouchableOpacity
                 key="searchSchoolButton"
                 style={styles.button}
@@ -204,95 +144,95 @@ export default class SchedulingVisit extends React.Component {
                 <Text style={styles.buttonText}>Pesquisar escola</Text>
               </TouchableOpacity>
             </View>
-          </View>
 
-          {this.props.school.schoolSelected && (
-            <SchoolData {...this.props.school} />
-          )}
+            {this.props.school.schoolSelected && (
+              <SchoolData {...this.props.school} />
+            )}
 
-          <View style={styles.Container}>
-            <DatePicker
-              style={styles.Picker}
-              placeholder="Data"
-              date={this.state.visit.date}
-              mode="date"
-              format="DD-MM-YYYY"
-              confirmBtnText="Confirmar"
-              cancelBtnText="Cancelar"
-              customStyles={{
-                dateInput: {
-                  borderRadius: 7,
-                },
-              }}
-              onDateChange={date => this.setState({ visit: { ...this.state.visit, date } })}
-            />
-          </View>
+            <View style={[styles.Container, { marginVertical: 10 }]}>
+              <DatePicker
+                style={styles.Picker}
+                placeholder="Data"
+                date={this.state.visit.date}
+                mode="date"
+                format="DD-MM-YYYY"
+                confirmBtnText="Confirmar"
+                cancelBtnText="Cancelar"
+                customStyles={{
+                  dateInput: {
+                    borderRadius: 7,
+                  },
+                }}
+                onDateChange={date => this.setState({ visit: { ...this.state.visit, date } })}
+              />
+            </View>
 
-          <View style={styles.Container}>
-            <DatePicker
-              style={styles.Picker}
-              placeholder="Horário"
-              date={this.state.visit.time}
-              mode="time"
-              confirmBtnText="Confirmar"
-              cancelBtnText="Cancelar"
-              customStyles={{
-                dateInput: {
-                  borderRadius: 7,
-                },
-              }}
-              onDateChange={time => this.setState({ visit: { ...this.state.visit, time } })}
-            />
-          </View>
+            <View style={styles.Container}>
+              <DatePicker
+                style={styles.Picker}
+                placeholder="Horário"
+                date={this.state.visit.time}
+                mode="time"
+                confirmBtnText="Confirmar"
+                cancelBtnText="Cancelar"
+                customStyles={{
+                  dateInput: {
+                    borderRadius: 7,
+                  },
+                }}
+                onDateChange={time => this.setState({ visit: { ...this.state.visit, time } })}
+              />
+            </View>
 
-          <View style={styles.Container}>
-            <View>
+            <View style={styles.Container}>
               <TouchableOpacity
                 key="searchCounselorButton"
                 style={styles.button}
-                onPress={() => Alert.alert('Pesquisando')}
+                onPress={() => {
+                  if (this.props.listOfCounselorsInAGroup.length === 0) {
+                    ShowToast.Toast(NO_OTHER_COUNSELORS);
+                  } else {
+                    this.popupDialogCounselor.show();
+                  }
+                }}
               >
-                <Text style={styles.buttonText}>Pesquisar Conselheiro</Text>
+                <Text style={styles.buttonText}>Adicionar Conselheiro</Text>
               </TouchableOpacity>
             </View>
-          </View>
 
-          <View style={styles.Container}>
-            <View>
+            {this.InviteAgentObject.showInvitedList()}
+
+            <View style={styles.Container}>
               <TouchableOpacity
                 key="searchAgentButton"
                 style={styles.button}
-                onPress={() => this.popupDialog.show()}
+                onPress={() => this.popupDialogAgent.show()}
               >
                 <Text style={styles.buttonText}>Convidar Agente</Text>
               </TouchableOpacity>
             </View>
-          </View>
-          <View style={styles.Container}>
-            {this.props.school.schoolSelected && (
-              <Button
-                enabled
-                key="scheduleButton"
-                text="Agendar"
-                onPress={() => {
-                  Alert.alert(
-                    'Agendamento Realizado',
-                    'O agendamento foi realizado com sucesso! Caso tenha convidado um agente, seu aplicativo de email abrirá.',
-                    [
-                      { text: 'Ok', onPress: () => this.props.asyncSchedulingVisit(this.state), style: 'cancel' },
-                    ],
-                    { cancelable: false });
-                }}
-              />
-            )}
-            <Button
-              enabled={false}
-              text="Agendar"
-              key="scheduleButton"
-              onPress={() => ({})}
-              disabled
-            />
 
+            {this.InviteAgentObject.showAgentEmail()}
+
+            <View>
+              {this.props.school.schoolSelected &&
+                this.state.visit.date !== '' && this.state.visit.time !== '' && (
+                <Button
+                  enabled
+                  key="scheduleButton"
+                  text="Agendar"
+                  onPress={() => this.props.asyncSchedulingVisit(this.state,
+                    this.props.counselor)}
+                />
+              )}
+              <Button
+                enabled={false}
+                text="Agendar"
+                key="scheduleButton"
+                onPress={() => ({})}
+                disabled
+              />
+            </View>
           </View>
         </ScrollView>
       </View>
@@ -300,10 +240,14 @@ export default class SchedulingVisit extends React.Component {
   }
 }
 
-const { shape, string, number } = PropTypes;
+
+const { shape, string, number, func } = PropTypes;
 
 SchedulingVisit.propTypes = {
-  asyncSchedulingVisit: PropTypes.func.isRequired,
+  asyncSchedulingVisit: func.isRequired,
+  asyncGetCounselorFromGroup: func.isRequired,
+  setVisitNewLists: func.isRequired,
+  application: PropTypes.bool.isRequired,
   counselor: shape({
     token: string.isRequired,
     nuvemCode: number.isRequired,
@@ -313,5 +257,14 @@ SchedulingVisit.propTypes = {
     schoolName: string.isRequired,
     schoolPhone: string.isRequired,
     schoolEmail: string.isRequired,
+  }).isRequired,
+  listOfCounselorsInAGroup: PropTypes.arrayOf(PropTypes.shape({
+    name: string.isRequired,
+    cpf: string.isRequired,
+    phone: string.isRequired,
+  })).isRequired,
+  visitListOfInviteesWithCounselorInformations: shape({
+  }).isRequired,
+  visitListOfInvitees: shape({
   }).isRequired,
 };

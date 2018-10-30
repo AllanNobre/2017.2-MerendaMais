@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
-<View
+<Component
   style={
     Object {
       "backgroundColor": "white",
@@ -10,24 +10,25 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
   }
 >
   <Header
-    backButton={true}
+    backButton={false}
+    onPress={[Function]}
     subTitle="Refeitório"
-    title="Relatório"
+    title="Lista de verificação"
   />
   <KeyboardAvoidingView
     behavior="padding"
+    enabled={true}
     keyboardVerticalOffset={0}
     style={
       Object {
-        "flex": 6,
+        "flex": 1,
         "flexDirection": "column",
-        "marginBottom": 9,
       }
     }
   >
-    <ScrollViewMock>
-      <View>
-        <View
+    <ScrollView>
+      <Component>
+        <Component
           style={
             Object {
               "flexDirection": "row",
@@ -37,7 +38,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -52,7 +52,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -64,16 +63,20 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           >
             Nao
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="0"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -82,9 +85,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -95,8 +96,8 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -105,9 +106,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -118,32 +117,34 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            Escola possui Refeitório
+            Escola não possui refeitório
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="1"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -152,9 +153,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -165,8 +164,8 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -175,9 +174,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -188,32 +185,34 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
             Alimentos prontos sem proteção
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="2"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -222,9 +221,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -235,8 +232,8 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -245,9 +242,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -258,32 +253,34 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
             Refeição sendo servida sem talheres 
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="3"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -292,9 +289,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -305,8 +300,8 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -315,9 +310,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -328,32 +321,34 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
             Alunos compartilhando os copos no bebedouro
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="4"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -362,9 +357,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -375,8 +368,8 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -385,9 +378,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -398,32 +389,34 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
             Pia sem sabonete e papel toalha para lavar as mãos
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="5"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -432,9 +425,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -445,8 +436,8 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -455,9 +446,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -468,32 +457,34 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
             Não vi pia
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="6"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -502,9 +493,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -515,8 +504,8 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -525,9 +514,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -538,32 +525,34 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
             Telhado sem forro
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="7"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -572,9 +561,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -585,8 +572,8 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -595,9 +582,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -608,32 +593,34 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
             Telhado com furos
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="8"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -642,9 +629,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -655,8 +640,8 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -665,9 +650,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -678,32 +661,34 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
             Lixeiras destampadas
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="9"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -712,9 +697,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -725,8 +708,8 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -735,9 +718,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -748,32 +729,34 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
             Chão difícil de limpar
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="10"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -782,9 +765,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -795,8 +776,8 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -805,9 +786,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -818,32 +797,34 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
             Parede difícil de limpar
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="11"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -852,9 +833,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -865,8 +844,8 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -875,9 +854,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -888,32 +865,34 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
             Janelas sem tela de proteção
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="12"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -922,9 +901,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -935,8 +912,8 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -945,9 +922,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -958,32 +933,34 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
             Portas sem tela de proteção
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="13"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -992,9 +969,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1005,8 +980,8 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -1015,9 +990,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1028,32 +1001,34 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
             Portas sem rodapé
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="14"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -1062,9 +1037,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1075,8 +1048,8 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -1085,9 +1058,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1098,32 +1069,34 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
             Insetos sobrevoando o local
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="15"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -1132,9 +1105,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1145,8 +1116,8 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -1155,9 +1126,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1168,32 +1137,34 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
             Ventilador de teto empoeirado
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="16"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -1202,9 +1173,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1215,8 +1184,8 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -1225,9 +1194,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1238,32 +1205,34 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
             Local mal iluminado
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="17"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -1272,9 +1241,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1285,8 +1252,8 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -1295,9 +1262,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1308,37 +1273,49 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
             Local sujo
           </Text>
-        </View>
-      </View>
-      <View
+        </Component>
+      </Component>
+      <Component
         behavior="padding"
       >
-        <View
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
           style={
             Object {
-              "paddingLeft": 10,
-              "paddingRight": 10,
-              "paddingTop": 30,
+              "fontSize": 15,
+              "marginLeft": 15,
+              "marginTop": 15,
+            }
+          }
+        >
+          Alguma observação adicional? Insira aqui. (Opcional)
+        </Text>
+        <Component
+          style={
+            Object {
+              "marginHorizontal": 10,
+              "marginTop": 5,
             }
           }
         >
           <TextInput
+            allowFontScaling={true}
             multiline={true}
             onChangeText={[Function]}
             placeholder="Observações (opcional)"
@@ -1355,33 +1332,32 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
             }
             underlineColorAndroid="transparent"
           />
-        </View>
-      </View>
+        </Component>
+      </Component>
       <TouchableOpacity
         activeOpacity={0.2}
         key="setObservation"
         onPress={[Function]}
         style={
           Object {
+            "alignItems": "center",
             "backgroundColor": "#FF9500",
             "borderRadius": 7,
             "borderWidth": 1,
-            "justifyContent": "flex-end",
-            "marginBottom": 20,
             "marginHorizontal": 15,
-            "marginTop": 30,
-            "paddingVertical": 10,
+            "marginVertical": 30,
+            "paddingVertical": 15,
           }
         }
       >
         <Text
           accessible={true}
           allowFontScaling={true}
-          disabled={false}
           ellipsizeMode="tail"
           style={
             Object {
               "color": "#FFF",
+              "fontSize": 15,
               "textAlign": "center",
             }
           }
@@ -1389,7 +1365,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           Concluir
         </Text>
       </TouchableOpacity>
-    </ScrollViewMock>
+    </ScrollView>
   </KeyboardAvoidingView>
-</View>
+</Component>
 `;
